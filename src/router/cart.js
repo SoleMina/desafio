@@ -58,9 +58,8 @@ router.delete("/:pid/products/:pid_prod", (req, res) => {
   });
 });
 
-/*
 router.get("*", (req, res) => {
   res.status(404).send("La página buscada no existe");
 });
-*/
+
 export default router;
