@@ -1,0 +1,80 @@
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #ffd598;
+}
+.bck {
+  background-color: #2ecde1;
+}
+table {
+  background: #b7b7b7;
+  width: 600px;
+  text-align: center;
+  border-spacing: 0;
+}
+th {
+  padding: 1%;
+}
+th,
+td {
+  border-bottom: 1px solid white !important;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
+  font-weight: bold;
+}
+.green {
+  color: green;
+}
+.products-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.text-center {
+  text-align: center;
+}
+.products-box {
+  width: 22%;
+  margin-bottom: 2%;
+}
+.products-box img {
+  width: 100%;
+  display: block;
+}
+.products-card {
+  background: #7a7a7a;
+  color: white;
+  text-align: center;
+  padding-top: 1%;
+}
+#productForm {
+  background-color: white;
+  padding: 2% 4%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/*MEDIA QUERIES*/
+@media (max-width: 1150px) {
+  .products-box {
+    width: 40%;
+  }
+}
+@media (max-width: 950px) {
+  .products-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .products-box {
+    width: 90%;
+  }
+  table {
+    width: auto;
+  }
+}
