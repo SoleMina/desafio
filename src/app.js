@@ -5,6 +5,7 @@ import upload from "./services/uploader.js";
 import { Server } from "socket.io";
 import __dirname from "./utils.js";
 import { authMiddleware } from "./utils.js";
+
 //Iniciar
 const app = express();
 const PORT = process.env.PORT || 8080;

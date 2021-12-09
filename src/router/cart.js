@@ -1,9 +1,6 @@
 import express from "express";
 import Carrito from "../classes/carrito.js";
-import Container from "../classes/container.js";
-import { authMiddleware } from "../utils.js";
 const carrito = new Carrito();
-const container = new Container();
 const router = express.Router();
 
 //Hola, el entregable es un poco confuso porque no se le pone id del cart en la ruta así que
