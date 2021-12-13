@@ -3,7 +3,7 @@ import Carrito from "../classes/carrito.js";
 const carrito = new Carrito();
 const router = express.Router();
 
-//Get products from id cart
+//Get products with id cart
 router.get("/:cid/products", (req, res) => {
   let id = parseInt(req.params.cid);
   carrito.getProductsByCartId(id).then((result) => {
@@ -27,8 +27,6 @@ router.post("/:cid/products", (req, res) => {
     res.send(result);
   });
 });
-
-//From here it's more dinamic
 
 //Delete cart by id
 router.delete("/:pid", (req, res) => {

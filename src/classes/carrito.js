@@ -1,9 +1,5 @@
 import fs from "fs";
 import __dirname from "../utils.js";
-import Container from "./container.js";
-const container = new Container();
-
-const productURL = __dirname + "/files/productos.txt";
 const cartURL = __dirname + "/files/carrito.txt";
 
 class Carrito {
