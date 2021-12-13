@@ -109,21 +109,31 @@ class Carrito {
     }
   }
 
-  async getAllProducts() {
+  async getProductsByCartId(id) {
     try {
       let data = await fs.promises.readFile(cartURL, "utf-8");
       data = JSON.parse(data);
-      let products = data[0].products;
-      console.log("EPPP", products);
-      return {
-        status: "success",
-        message: "Productos encontrados",
-        payload: products
-      };
+
+      if (data.length > 0) {
+        let index = data.findIndex((product) => product.id === id);
+        console.log(index);
+        let cart = data[index];
+
+        let products = cart.products;
+        return {
+          status: "Success",
+          payload: products
+        };
+      } else {
+        return {
+          status: "Error",
+          message: "No se encontró  productos en el carrito: " + error
+        };
+      }
     } catch (error) {
       return {
         status: "Error",
-        message: "No se encontró los productos" + error
+        message: "No se encontró  productos en el carrito:" + error
       };
     }
   }

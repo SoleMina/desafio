@@ -3,20 +3,10 @@ import Carrito from "../classes/carrito.js";
 const carrito = new Carrito();
 const router = express.Router();
 
-//Hola, el entregable es un poco confuso porque no se le pone id del cart en la ruta así que
-//para las primeras partes use el primer cart
-
-//Get all products added from cart
-router.get("/products", (req, res) => {
-  carrito.getAllProducts().then((result) => {
-    res.send(result.payload);
-  });
-});
-
-//Get product with id product from  cart 0 by default
-router.get("/:pid/products", (req, res) => {
-  let id = req.params.pid;
-  carrito.getProductById(id).then((result) => {
+//Get products from id cart
+router.get("/:cid/products", (req, res) => {
+  let id = parseInt(req.params.cid);
+  carrito.getProductsByCartId(id).then((result) => {
     res.send(result);
   });
 });
