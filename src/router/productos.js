@@ -7,7 +7,6 @@ import { authMiddleware } from "../utils.js";
 const container = new Container();
 const router = express.Router();
 
-const admin = false;
 //GETS
 router.get("/", authMiddleware, (req, res) => {
   console.log(req.query);

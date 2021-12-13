@@ -1,6 +1,5 @@
 //Instanciar Socket desde el lado del cliente
 const socket = io();
-const admin = true;
 //*************EVENTOS DE SOCKET****************+*/
 socket.on("deliverProducts", (data) => {
   let products = data.payload;
@@ -25,40 +24,35 @@ document.addEventListener("submit", (event) => {
   let form = document.querySelector("#productForm");
   let data = new FormData(form);
 
-  if (admin) {
-    fetch("http://localhost:8080/api/products", {
-      method: "POST",
-      body: data
+  fetch("http://localhost:8080/api/products", {
+    method: "POST",
+    body: data
+  })
+    .then((result) => {
+      return result.json();
     })
-      .then((result) => {
-        return result.json();
-      })
-      .then((json) => {
+    .then((json) => {
+      if (json.message == "No autorizado") {
+        Swal.fire({
+          title: "Error",
+          text: json.message,
+          icon: "error",
+          timer: 2000
+        });
+        console.log("JSON", json.message);
+      } else {
         Swal.fire({
           title: "éxito",
           text: json.message,
           icon: "success",
           timer: 2000
-        }).then((result) => {
-          location.href = "http://localhost:8080/";
         });
-      });
-  } else {
-    fetch("http://localhost:8080/api/products")
-      .then((result) => {
-        return result.json();
-      })
-      .then((json) => {
-        Swal.fire({
-          title: "Error",
-          text: json.message,
-          icon: "failed",
-          timer: 2000
-        }).then((result) => {
-          location.href = "http://localhost:8080/";
-        });
-      });
-  }
+        console.log("JSON", json.message);
+      }
+    })
+    .then((result) => {
+      location.href = "http://localhost:8080/";
+    });
 });
 
 //*************EVENTOS DE SOCKET PARA CENTRO DE MENSAJE****************+*/

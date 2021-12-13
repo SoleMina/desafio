@@ -18,10 +18,12 @@ router.post("/", (req, res) => {
   });
 });
 
-//Add product by id product to cart 0 by default
-router.post("/:pid/products", (req, res) => {
-  let id = parseInt(req.params.pid);
-  carrito.addProduct(id).then((result) => {
+//Add product to cart by cart id
+router.post("/:cid/products", (req, res) => {
+  let id = parseInt(req.params.cid);
+  let product = req.body;
+  console.log(product);
+  carrito.addProduct(id, product).then((result) => {
     res.send(result);
   });
 });

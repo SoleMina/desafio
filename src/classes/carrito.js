@@ -59,46 +59,27 @@ class Carrito {
       }
     }
   }
-  async addProduct(id) {
+  async addProduct(id, product) {
     try {
-      let dataProduct = await fs.promises.readFile(productURL, "utf-8");
-      let products = JSON.parse(dataProduct);
-      console.log("PRODUCT", products);
-      console.log("id", id);
+      let data = await fs.promises.readFile(cartURL, "utf-8");
+      data = JSON.parse(data);
 
-      //filter devuelve array, por eso usamos find ya que devuelve el valor como tal, en este caso objeto
-      let product = products.find((product) => product.id == id);
-      if (products.length > 0) {
-        if (product) {
-          let data = await fs.promises.readFile(cartURL, "utf-8");
-          data = JSON.parse(data);
-          console.log(id);
-          data[0].products = [...data[0].products, product];
-          try {
-            await fs.promises.writeFile(cartURL, JSON.stringify(data, null, 2));
-            return {
-              status: "success",
-              message: "Producto creado",
-              payload: product
-            };
-          } catch (error) {
-            return {
-              status: "error",
-              message: "No se pudo crear el productoooo"
-            };
-          }
-        } else {
-          return {
-            status: "error",
-            product: null,
-            message: "Producto no encontrado1"
-          };
-        }
+      let index = data.findIndex((product) => product.id === id);
+      let cart = data[index];
+      let products = cart.products;
+      if (products) {
+        products.push(product);
+
+        await fs.promises.writeFile(cartURL, JSON.stringify(data, null, 2));
+
+        return {
+          status: "Success",
+          payload: products
+        };
       } else {
         return {
           status: "error",
-          product: null,
-          message: "Producto no encontrado2"
+          message: "No se pudo añadir producto: " + error
         };
       }
     } catch (error) {
@@ -134,42 +115,6 @@ class Carrito {
       return {
         status: "Error",
         message: "No se encontró  productos en el carrito:" + error
-      };
-    }
-  }
-  async getProductById(id) {
-    try {
-      let data = await fs.promises.readFile(cartURL, "utf-8");
-      data = JSON.parse(data);
-      let products = data[0].products;
-      console.log(products);
-
-      let pid = parseInt(id);
-
-      //filter devuelve array, por eso usamos find ya que devuelve el valor como tal, en este caso objeto
-      let index = products.findIndex((product) => product.id === pid);
-      let productSelected = products[index];
-      if (products.length > 0) {
-        if (productSelected) {
-          return { status: "success", payload: productSelected };
-        } else {
-          return {
-            status: "error",
-            product: null,
-            message: "Producto no encontrado"
-          };
-        }
-      } else {
-        return {
-          status: "error",
-          product: null,
-          message: "Producto no encontrado"
-        };
-      }
-    } catch (error) {
-      return {
-        status: "Error",
-        message: "No se encontró el producto " + error
       };
     }
   }
