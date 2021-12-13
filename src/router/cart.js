@@ -19,6 +19,7 @@ router.post("/", (req, res) => {
 });
 
 //Add product to cart by cart id
+//Enviar el producto por el body
 router.post("/:cid/products", (req, res) => {
   let id = parseInt(req.params.cid);
   let product = req.body;
