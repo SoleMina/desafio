@@ -32,16 +32,6 @@
     "timestamp": "10:16:30",
     "products": [
       {
-        "title": "Peluche Rosa",
-        "description": "Peluche grande",
-        "price": 166,
-        "thumbnail": "http://localhost:8080/images/1638804221916pelucherosa.jpg",
-        "codigo": "005",
-        "stock": 9,
-        "timestamp": "10:23:41",
-        "id": 5
-      },
-      {
         "title": "Epson",
         "price": "654",
         "thumbnail": "http://localhost:8080/images/1638290946082impresora.jpg",

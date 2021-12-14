@@ -133,7 +133,7 @@ class Carrito {
       if (data.length > 0) {
         if (productsResult) {
           await fs.promises.writeFile(cartURL, JSON.stringify(data, null, 2));
-          return { status: "success", payload: productsResult };
+          return { status: "success", message: "Producto eliminado" };
         } else {
           return {
             status: "error",
@@ -164,13 +164,12 @@ class Carrito {
       await fs.promises.writeFile(cartURL, JSON.stringify(result, null, 2));
       return {
         status: "success",
-        mesagge: "Producto eliminado",
-        payload: result
+        mesagge: "Carrito eliminado"
       };
     } catch (error) {
       return {
         status: "Error",
-        message: "No se pudo eliminar el producto " + error
+        message: "No se pudo eliminar el carrito " + error
       };
     }
   }

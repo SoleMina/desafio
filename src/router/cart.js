@@ -33,7 +33,7 @@ router.post("/:cid/products", (req, res) => {
 router.delete("/:pid", (req, res) => {
   let id = parseInt(req.params.pid);
   carrito.deleteCartById(id).then((result) => {
-    res.send(result.payload);
+    res.send(result);
   });
 });
 
@@ -42,7 +42,7 @@ router.delete("/:pid/products/:pid_prod", (req, res) => {
   let idCart = parseInt(req.params.pid);
   let idProduct = parseInt(req.params.pid_prod);
   carrito.deleteProductById(idCart, idProduct).then((result) => {
-    res.send(result.payload);
+    res.send(result);
   });
 });
 
