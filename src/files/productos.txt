@@ -34,13 +34,13 @@
     "id": 5
   },
   {
-    "id": 6,
-    "title": "Peluche Rosa",
+    "title": "Peluche Pink",
     "description": "Peluche de color rosa",
     "price": 122,
     "thumbnail": "http://localhost:8080/images/1639083782414pelucherosa.jpg",
     "codigo": "011",
     "stock": 8,
-    "timestamp": "16:03:02"
+    "timestamp": "16:03:02",
+    "id": 6
   }
 ]

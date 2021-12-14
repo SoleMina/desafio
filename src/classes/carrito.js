@@ -23,11 +23,11 @@ class Carrito {
 
       try {
         await fs.promises.writeFile(cartURL, JSON.stringify(products, null, 2));
-        return { status: "success", message: "Producto creado" };
+        return { status: "success", message: "Carrito creado" };
       } catch (error) {
         return {
           status: "error",
-          message: "No se pudo crear el producto" + error
+          message: "No se pudo crear el carrito" + error
         };
       }
     } catch {
@@ -70,6 +70,7 @@ class Carrito {
 
         return {
           status: "Success",
+          message: "Producto agregado",
           payload: products
         };
       } else {
@@ -81,7 +82,7 @@ class Carrito {
     } catch (error) {
       return {
         status: "error",
-        message: "No se pudo crear el carrito: " + error
+        message: "No se pudo añadir el producto: " + error
       };
     }
   }
@@ -99,18 +100,19 @@ class Carrito {
         let products = cart.products;
         return {
           status: "Success",
+          message: "Producto encontrado",
           payload: products
         };
       } else {
         return {
           status: "Error",
-          message: "No se encontró  productos en el carrito: " + error
+          message: "No se encontró productos en el carrito: " + error
         };
       }
     } catch (error) {
       return {
         status: "Error",
-        message: "No se encontró  productos en el carrito:" + error
+        message: "No se encontró productos en el carrito:" + error
       };
     }
   }
